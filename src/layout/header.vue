@@ -1,14 +1,15 @@
 <template>
-  <div class="header">
+  <div class="header" style="-webkit-app-region: drag">
     <div class="left">
-      <div class="buttons">
+      <div class="buttons" style="-webkit-app-region: no-drag;">
         <div
           @click="onClickLogo"
           class="mac-button red"
+          id="screenerExit"
         >
           <Icon
             :size="9"
-            type="home"
+            type=""
           />
         </div>
         <div
@@ -21,12 +22,12 @@
           />
         </div>
         <div
-          @click="fullscreen"
+          @click="onClickLogo"
           class="mac-button green"
         >
           <Icon
             :size="9"
-            type="fullscreen"
+            type="home"
           />
         </div>
       </div>
@@ -45,11 +46,12 @@
       <div
         class="history"
         v-show="!isPlayerShow"
+        style="-webkit-app-region: no-drag;"
       >
         <RoutesHistory />
       </div>
     </div>
-    <div class="right">
+    <div class="right" style="-webkit-app-region: no-drag;">
       <div class="search-wrap">
         <Search />
       </div>
