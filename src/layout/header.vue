@@ -36,6 +36,7 @@
         @click="onClickDown"
         class="shrink-player"
         v-if="isPlayerShow"
+        style="-webkit-app-region: no-drag;"
       >
         <Icon
           :backdrop="true"
