@@ -261,7 +261,7 @@ export default {
       return this.isPlayerShow ? "shrink" : "open"
     },
     shareUrl() {
-      return `${window.location.origin}?shareMusicId=${this.currentSong.id}`
+      return `https://music.163.com/#/song?id=${this.currentSong.id}`
     },
     ...mapState([
       "currentSong",
