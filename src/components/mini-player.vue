@@ -192,7 +192,7 @@ export default {
       this.setPlayerShow(!this.isPlayerShow)
     },
     goGitHub() {
-      window.open("https://github.com/sl1673495/vue-netease-music")
+      window.open("https://github.com/oniyakun/vue-netease-music")
     },
 
     ...mapMutations([
