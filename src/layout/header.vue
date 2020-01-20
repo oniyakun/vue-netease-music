@@ -15,6 +15,7 @@
         <div
           @click="exitFullscreen"
           class="mac-button yellow"
+          id="screenerExit"
         >
           <Icon
             :size="9"
