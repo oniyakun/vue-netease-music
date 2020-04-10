@@ -13,7 +13,7 @@
           />
         </div>
         <div
-          @click="exitFullscreen"
+          @click="togglewindow"
           class="mac-button yellow"
         >
           <Icon
@@ -67,7 +67,9 @@ import Search from "@/components/search"
 import RoutesHistory from "@/components/routes-history"
 import { mapState, mapMutations } from "@/store/helper/music"
 import { requestFullScreen, exitFullscreen, isFullscreen } from "@/utils"
-
+if (window.require) {
+  var ipc = window.require('electron').ipcRenderer
+}
 export default {
   methods: {
     onClickLogo() {
@@ -86,6 +88,11 @@ export default {
     },
     toggleFullscreen() {
       this.isFullscreen = !this.isFullscreen
+    },
+    togglewindow() {
+      if (window.require) {
+        ipc.send('hide');
+      }
     },
     ...mapMutations(["setPlayerShow"])
   },
