@@ -13,7 +13,7 @@
           />
         </div>
         <div
-          @click="togglewindow"
+          @click="hidewindow"
           class="mac-button yellow"
         >
           <Icon
@@ -89,7 +89,7 @@ export default {
     toggleFullscreen() {
       this.isFullscreen = !this.isFullscreen
     },
-    togglewindow() {
+    hidewindow() {
       if (window.require) {
         ipc.send('hide');
       }

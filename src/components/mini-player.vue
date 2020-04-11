@@ -109,7 +109,12 @@ import {
 import Storage from "good-storage"
 import Share from "@/components/share"
 import { VOLUME_KEY, playModeMap, isDef } from "@/utils"
-
+if (window.require) {
+  var ipc = window.require('electron').ipcRenderer
+}
+ipc.on('toggleplay', e => togglePlaying())
+ipc.on('prev', e => prev())
+ipc.on('next', e => next())
 const DEFAULT_VOLUME = 0.75
 export default {
   data() {
@@ -120,7 +125,10 @@ export default {
     }
   },
   mounted() {
-    this.audio.volume = this.volume
+    this.audio.volume = this.volume,
+    window.togglePlaying = this.togglePlaying,
+    window.prev = this.prev,
+    window.next = this.next
   },
   methods: {
     togglePlaying() {
@@ -190,7 +198,7 @@ export default {
       this.setPlayerShow(!this.isPlayerShow)
     },
     goGitHub() {
-      window.open("https://github.com/oniyakun/vue-netease-music")
+      window.open("https://github.com/oniyakun/NeteaseMusic-Client")
     },
 
     ...mapMutations([
