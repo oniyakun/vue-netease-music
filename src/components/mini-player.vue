@@ -176,6 +176,7 @@ export default {
     },
     onProgressChange(percent) {
       this.audio.currentTime = this.currentSong.durationSecond * percent
+      this.setPlayingState(true)
     },
     onVolumeChange(percent) {
       this.audio.volume = percent
