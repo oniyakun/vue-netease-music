@@ -201,7 +201,9 @@ export default {
       this.setPlayerShow(!this.isPlayerShow)
     },
     goGitHub() {
-      window.open("https://github.com/oniyakun/NeteaseMusic-Client")
+      if (window.require) {
+        ipc.send('gogithub');
+      }
     },
 
     ...mapMutations([
