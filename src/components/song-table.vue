@@ -2,6 +2,9 @@
 import ElTable from "element-ui/lib/table"
 import { mapMutations, mapActions, mapState } from "@/store/helper/music"
 import { pad, goMvWithCheck } from "@/utils"
+if (window.require) {
+  var ipc = window.require('electron').ipcRenderer
+}
 
 export default {
   props: {
@@ -137,6 +140,11 @@ export default {
     onRowClick(song) {
       this.startSong(song)
       this.setPlaylist(this.songs)
+      if (window.require) {
+        let titlename = this.currentSong.name;
+        let artistsname = this.currentSong.artistsText;
+        ipc.send('name', [titlename, artistsname]);
+      }
     },
     isActiveSong(song) {
       return song.id === this.currentSong.id

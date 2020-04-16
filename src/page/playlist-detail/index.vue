@@ -39,14 +39,20 @@ import Comments from "@/components/comments"
 import { createSong, scrollInto } from "@/utils"
 import { getListDetail } from "@/api"
 import { getSongDetail } from "@/api"
-
+import { mapState } from "@/store/helper/music"
 const MAX = 500
 const SONG_IDX = 0
 const COMMENT_IDX = 1
 export default {
   metaInfo() {
-    return {
-      title: this.playlist.name,
+    if (this.currentSong.name == undefined) {
+      return {
+        title: this.playlist.name,
+      }
+    } else {
+      return {
+        title: this.currentSong.name + ' - ' + this.currentSong.artistsText,
+      }
     }
   },
   async created() {
@@ -115,6 +121,7 @@ export default {
           .includes(this.searchValue.toLowerCase()),
       )
     },
+    ...mapState(["currentSong"])
   },
   watch: {
     id: {
