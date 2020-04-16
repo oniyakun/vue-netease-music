@@ -27,7 +27,7 @@
         <div class="login-help">
           <p class="help">
             1、请
-            <a href="http://music.163.com" target="_blank"
+            <a @click="onClickLink"
               >点我(http://music.163.com)</a
             >打开网易云音乐官网
           </p>
@@ -60,7 +60,9 @@ import {
   mapState as mapUserState,
   mapGetters as mapUserGetters
 } from "@/store/helper/user"
-
+if (window.require) {
+  var ipc = window.require('electron').ipcRenderer
+}
 export default {
   // 自动登录
   created() {
@@ -96,6 +98,11 @@ export default {
       confirm("确定要注销吗？", () => {
         this.logout()
       })
+    },
+    onClickLink() {
+      if (window.require) {
+        ipc.send('openLink');
+      }
     },
     ...mapUserActions(["login", "logout"])
   },
