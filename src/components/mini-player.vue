@@ -130,7 +130,8 @@ export default {
     this.audio.volume = this.volume,
     window.togglePlaying = this.togglePlaying,
     window.prev = this.prev,
-    window.next = this.next
+    window.next = this.next,
+    window.discord_tray = this.discord_tray
   },
   methods: {
     togglePlaying() {
@@ -166,15 +167,38 @@ export default {
     prev() {
       if (this.songReady) {
         this.startSong(this.prevSong)
+        
+      }
+      if (window.require) {
+        let titlename = this.currentSong.name;
+        let artistsname = this.currentSong.artistsText;
+        ipc.send('name', [titlename, artistsname]);
       }
     },
     next() {
       if (this.songReady) {
         this.startSong(this.nextSong)
       }
+      if (window.require) {
+        let titlename = this.currentSong.name;
+        let artistsname = this.currentSong.artistsText;
+        ipc.send('name', [titlename, artistsname]);
+      }
     },
     end() {
       this.next()
+      if (window.require) {
+        let titlename = this.currentSong.name;
+        let artistsname = this.currentSong.artistsText;
+        ipc.send('name', [titlename, artistsname]);
+      }
+    },
+    discord_tray() {
+      if (window.require) {
+        let titlename = this.currentSong.name;
+        let artistsname = this.currentSong.artistsText;
+        ipc.send('name', [titlename, artistsname]);
+      }
     },
     onProgressChange(percent) {
       this.audio.currentTime = this.currentSong.durationSecond * percent
