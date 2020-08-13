@@ -286,6 +286,8 @@ export default {
     onGoMv() {
       this.setPlayerShow(false)
       goMvWithCheck(this.currentSong.mvId)
+      var obj4 = document.getElementsByClassName("layout-body")[0];
+      obj4.style.filter= "blur(0px)";
     },
     resizeScroller: debounce(function() {
       this.$refs.scroller.getScroller().refresh()
