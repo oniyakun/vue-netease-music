@@ -53,7 +53,7 @@ export default {
   ['--tab-item-active-color']: '#fff',
 
   //modal
-  ['--modal-bg-color']: '1f1f1fe3',
+  ['--modal-bg-color']: '#1f1f1fe3',
   // prompt
   ['--prompt-bg-color']: '#363636e0',
   //song-detail
