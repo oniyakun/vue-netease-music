@@ -50,7 +50,7 @@ export default {
   .layout-body {
     display: flex;
     height: calc(100% - #{$header-height});
-    display: flex;
+    filter: blur(0px);
 
     .layout-menu {
       // 这个100%已经减去了头部height

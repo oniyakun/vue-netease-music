@@ -141,12 +141,12 @@ export default {
       this.setPlayingState(!this.playing)
     },
     playerToggleIndexShow(arg) {
-      if (arg == true) {
+      if (arg == false) {
         var obj = document.getElementsByClassName("layout-body")[0];
-        obj.style.display= "none";
+        obj.style.filter= "blur(1000px)";
       } else {
         var obj2 = document.getElementsByClassName("layout-body")[0];
-        obj2.style.display= "flex";
+        obj2.style.filter= "blur(0px)";
       }
     },
     ready() {

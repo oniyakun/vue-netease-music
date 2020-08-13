@@ -73,8 +73,8 @@ if (window.require) {
 export default {
   methods: {
     headerToggleIndexShow() {
-        var obj = document.getElementsByClassName("layout-body")[0];
-        obj.style.display= "flex";
+        var obj3 = document.getElementsByClassName("layout-body")[0];
+        obj3.style.filter= "blur(0px)";
     },
     onClickLogo() {
       this.$router.push("/discovery")
