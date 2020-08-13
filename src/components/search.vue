@@ -92,6 +92,9 @@ import storage from "good-storage"
 import { mapActions, mapMutations } from "@/store/helper/music"
 import { getSearchHot, getSearchSuggest } from "@/api"
 import { createSong, genArtistisText, debounce } from "@/utils"
+if (window.require) {
+  var ipc = window.require('electron').ipcRenderer
+}
 
 const SEARCH_HISTORY_KEY = "__search_history__"
 export default {
@@ -161,6 +164,11 @@ export default {
       })
       this.startSong(song)
       this.addToPlaylist(song)
+      if (window.require) {
+        let titlename = this.song.name;
+        let artistsname = this.song.artistsText;
+        ipc.send('name', [titlename, artistsname]);
+      }
     },
     onClickPlaylist(item) {
       const { id } = item

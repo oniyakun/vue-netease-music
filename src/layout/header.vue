@@ -72,11 +72,16 @@ if (window.require) {
 }
 export default {
   methods: {
+    headerToggleIndexShow() {
+        var obj = document.getElementsByClassName("layout-body")[0];
+        obj.style.display= "flex";
+    },
     onClickLogo() {
       this.$router.push("/discovery")
     },
     onClickDown() {
       this.setPlayerShow(false)
+      this.headerToggleIndexShow()
     },
     fullscreen() {
       requestFullScreen(document.documentElement)

@@ -1,61 +1,61 @@
 export default {
-  ['--body-bgcolor']: '#fff',
-  ['--light-bgcolor']: '#f5f5f5',
+  ['--body-bgcolor']: '#ffffff00',
+  ['--light-bgcolor']: 'ffffff00',
 
-  ['--font-color']: '#4a4a4a',
-  ['--font-color-shallow']: '#404040',
-  ['--font-color-white']: '#333333',
-  ['--font-color-grey']: '#5c5c5c',
-  ['--font-color-grey2']: '#909090',
-  ['--font-color-grey-shallow']: '#BEBEBE',
-  ['--border']: '#f2f2f1',
-  ['--scrollbar-color']: '#D0D0D0',
-  ['--round-hover-bgcolor']: '#EBEBEB',
-  ['--stripe-bg']: '#FAFAFA',
-  ['--shallow-theme-bgcolor']: '#fdf6f5',
-  ['--shallow-theme-bgcolor-hover']: '#FBEDEC',
+  ['--font-color']: '#ffffffd4',
+  ['--font-color-shallow']: '#a0a0a0',
+  ['--font-color-white']: '#ffffffe8',
+  ['--font-color-grey']: '#929292',
+  ['--font-color-grey2']: '#fffffff2',
+  ['--font-color-grey-shallow']: '#ffffffd6',
+  ['--border']: '#ffffff38',
+  ['--scrollbar-color']: '#6f6f6f61',
+  ['--round-hover-bgcolor']: '#c5c5c599',
+  ['--stripe-bg']: '#ffffff38',
+  ['--shallow-theme-bgcolor']: '#d8d8d8',
+  ['--shallow-theme-bgcolor-hover']: '#7d7d7d',
 
   //header
-  ['--header-bgcolor']: '#F9F9F9',
-  ['--header-font-color']: '#4a4a4a',
-  ['--header-input-color']: '#4a4a4a',
-  ['--header-input-bgcolor']: '#EDEDED',
-  ['--header-input-placeholder-color']: '#BEBEBE',
+  ['--header-bgcolor']: '#ffffff00',
+  ['--header-font-color']: '#ffffffe0',
+  ['--header-input-color']: '#ffffff',
+  ['--header-input-bgcolor']: '#ffffff45',
+  ['--header-input-placeholder-color']: 'ffffffa8',
 
   // menu
-  ['--menu-bgcolor']: '#ededed',
-  ['--menu-item-hover-bg']: '#e7e7e7',
-  ['--menu-item-active-bg']: '#e2e2e2',
+  ['--menu-bgcolor']: '#ffffff00',
+  ['--menu-item-hover-bg']: '#7b7b7b4d',
+  ['--menu-item-active-bg']: '#5252523b',
 
   //player
-  ['--player-bgcolor']: '#F9F9F9',
+  ['--player-bgcolor']: '#ffffff00',
 
   //playlist
-  ['--playlist-bgcolor']: '#fff',
-  ['--playlist-hover-bgcolor']: '#EFEFEF',
+  ['--playlist-bgcolor']: '#4e4e4e42',
+  ['--playlist-hover-bgcolor']: '#4e4e4e42',
 
   //search
-  ['--search-bgcolor']: '#fff',
+  ['--search-bgcolor']: '#7b7b7b',
   //progress
-  ['--progress-bgcolor']: '#F5F5F5',
+  ['--progress-bgcolor']: '#ffffff45',
 
   //input
-  ['--input-color']: '#4a4a4a',
-  ['--input-bgcolor']: '#EDEDED',
+  ['--input-color']: '#ffffff',
+  ['--input-bgcolor']: '#75757559',
 
   //button
-  ['--button-border-color']: '#D9D9D9',
-  ['--button-hover-bgcolor']: '#F5F5F5',
+  ['--button-border-color']: '#454545',
+  ['--button-hover-bgcolor']: '#3E3E3E',
 
   //tab
-  ['--tab-item-color']: '#7F7F81',
-  ['--tab-item-hover-color']: '#343434',
-  ['--tab-item-active-color']: '#000',
+  ['--tab-item-color']: '#797979',
+  ['--tab-item-hover-color']: '#B4B4B4',
+  ['--tab-item-active-color']: '#fff',
 
   //modal
-  ['--modal-bg-color']: '#F9F9F9',
+  ['--modal-bg-color']: '1f1f1fe3',
   // prompt
-  ['--prompt-bg-color']: '#fff',
+  ['--prompt-bg-color']: '#363636e0',
   //song-detail
-  ['--song-shallow-grey-bg']: '#E6E5E6',
+  ['--song-shallow-grey-bg']: '2A2A2A',
 }

@@ -51,7 +51,7 @@ export default {
         }
       },
       [themes.white]: {
-        title: "浅色",
+        title: "透明",
         file: variablesWhite,
         style: {
           backgroundColor: "#F6F6F6",

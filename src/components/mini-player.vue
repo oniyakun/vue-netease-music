@@ -140,6 +140,15 @@ export default {
       }
       this.setPlayingState(!this.playing)
     },
+    playerToggleIndexShow(arg) {
+      if (arg == true) {
+        var obj = document.getElementsByClassName("layout-body")[0];
+        obj.style.display= "none";
+      } else {
+        var obj2 = document.getElementsByClassName("layout-body")[0];
+        obj2.style.display= "flex";
+      }
+    },
     ready() {
       this.songReady = true
     },
@@ -222,7 +231,8 @@ export default {
       this.setPlaylistShow(!this.isPlaylistShow)
     },
     togglePlayerShow() {
-      this.setPlayerShow(!this.isPlayerShow)
+    this.setPlayerShow(!this.isPlayerShow)
+    this.playerToggleIndexShow(!this.isPlayerShow)
     },
     goGitHub() {
       if (window.require) {

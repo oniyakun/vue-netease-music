@@ -155,6 +155,9 @@ import lyricParser from "@/utils/lrcparse"
 import { debounce, isDef, createSong, goMvWithCheck } from "@/utils"
 import Comments from "@/components/comments"
 import { mapState, mapMutations, mapActions, mapGetters } from "@/store/helper/music"
+if (window.require) {
+  var ipc = window.require('electron').ipcRenderer
+}
 
 const WHEEL_TYPE = "wheel"
 const SCROLL_TYPE = "scroll"
@@ -274,6 +277,11 @@ export default {
     onClickSong(song) {
       this.startSong(song)
       this.addToPlaylist(song)
+      if (window.require) {
+        let titlename = this.currentSong.name;
+        let artistsname = this.currentSong.artistsText;
+        ipc.send('name', [titlename, artistsname]);
+      }
     },
     onGoMv() {
       this.setPlayerShow(false)
@@ -412,7 +420,7 @@ $img-outer-d: 300px;
   transition: transform 0.5s;
 
   &.hide {
-    transform: translateY(105%);
+    transform: translateY(110%);
   }
 
   &.show {
