@@ -21,27 +21,25 @@
       <div class="login-body">
         <el-input
           class="input"
-          placeholder="请输入您的网易云uid"
-          v-model="uid"
+          placeholder="手机"
+          v-model="phone"
+          @input="change($event)"
         />
-        <div class="login-help">
-          <p class="help">
-            1、请
-            <a @click="onClickLink"
-              >点我(http://music.163.com)</a
-            >打开网易云音乐官网
-          </p>
-          <p class="help">2、点击页面右上角的“登录”</p>
-          <p class="help">3、点击您的头像，进入我的主页</p>
-          <p class="help">
-            4、复制浏览器地址栏 /user/home?id= 后面的数字（网易云 UID）
-          </p>
-        </div>
+        <el-input
+          class="input"
+          placeholder="密码"
+          v-model="passwd"
+          show-password
+          @input="change($event)"
+        />
+      </div>
+      <div class="login-help">
+          <p class="help">如账密无误但提示账号密码错误时再按一次登录即可</p>
       </div>
       <span class="dialog-footer" slot="footer">
         <el-button
           :loading="loading"
-          @click="onLogin(uid)"
+          @click="onLogin(phone, passwd)"
           class="login-btn"
           type="primary"
           >登 录</el-button
@@ -52,6 +50,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+var request = require('request');
+var md5 = require('md5-node');
 import storage from "good-storage"
 import { UID_KEY, isDef } from "@/utils"
 import { confirm } from "@/base/confirm"
@@ -68,7 +68,7 @@ export default {
   created() {
     const uid = storage.get(UID_KEY)
     if (isDef(uid)) {
-      this.onLogin(uid)
+      this.onAutoLogin(uid)
     }
   },
   data() {
@@ -85,7 +85,32 @@ export default {
     onCloseModal() {
       this.visible = false
     },
-    async onLogin(uid) {
+    async onLogin(phone, passwd) {
+      var md5_passwd = md5(passwd)
+      var options = {
+        'method': 'GET',
+        'url': 'https://netease-music-api.fe-mm.com/login/cellphone?phone=' + phone + '&md5_password=' + md5_passwd,
+        'headers': {
+          'Content-Type': 'application/json',
+        }
+      };
+      await request(options, function (error, response) {
+        if (error) throw new Error(error);
+        var obj = JSON.parse(response.body);
+        var uid = obj.account.id;
+        storage.set('uid', uid)
+      });
+      this.loading = true
+      let uid = storage.get('uid')
+      const success = await this.login(uid).finally(() => {
+        this.loading = false
+      })
+      if (success) {
+        this.onCloseModal()
+      }
+      storage.remove('uid')
+    },
+    async onAutoLogin(uid) {
       this.loading = true
       const success = await this.login(uid).finally(() => {
         this.loading = false
@@ -103,6 +128,9 @@ export default {
       if (window.require) {
         ipc.send('openLink');
       }
+    },
+    change(e) {
+      this.$forceUpdate()
     },
     ...mapUserActions(["login", "logout"])
   },
